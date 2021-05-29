@@ -24,9 +24,12 @@ function profile() {
 
 export default createModel(profile);
 
+const redirect = new URL('http://localhost:9000/api/github_oauth');
+redirect.host = location.host;
+export const oauth = `https://github.com/login/oauth/authorize?client_id=de186334e70d8c6a85a6&redirect_uri=${redirect.href}`;
+
 export enum APIS {
     user = '/api/user',
-    oauth = 'https://github.com/login/oauth/authorize?client_id=de186334e70d8c6a85a6&redirect_uri=http://localhost:9000/api/github_oauth',
     graphQL = '/proxy/graphql',
     logout = '/api/logout'
 }

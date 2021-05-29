@@ -2,10 +2,10 @@ import * as React from 'react';
 import { Descriptions, Card, List, Divider } from 'antd';
 import { PageContainer, BasicLayoutProps } from '@ant-design/pro-layout';
 import './style.less';
-import useStore, { APIS } from './store';
+import useStore, { APIS, oauth } from './store';
 export default (p:BasicLayoutProps) => {
     const store = useStore();
-    let dom = <a href={APIS.oauth}>login by github</a>;
+    let dom = <a href={oauth}>login by github</a>;
     if (store.user) {
         dom = <Descriptions>
             <Descriptions.Item label="login">{store.user?.login}</Descriptions.Item>
