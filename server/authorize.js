@@ -1,5 +1,4 @@
 const { buildBody } = require('./helper');
-const { verify } = require('./user');
 const TOKENNAME = 'x-token';
 const APPKEY = process.env.APPKEY || 'asdjfalfalfd';
 module.exports.APPKEY = APPKEY;

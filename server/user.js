@@ -58,7 +58,7 @@ exports.getJWT = function getJWT(req, res) {
   let token = req.get(TOKENNAME) || req.cookies[TOKENNAME]; // use github oauth
   const user = verify(req);
   if (user) {
-    token = jwt.sign({ login, avatar_url, email }, TOKENNAME);
+    token = jwt.sign({ login, avatar_url, email }, APPKEY);
     res.json(buildBody({ token }, 200));
   } else {
     res.json(buildBody(user, 403, new Error('unauthorized')));

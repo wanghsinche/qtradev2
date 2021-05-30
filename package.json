@@ -1,5 +1,6 @@
 {
   "private": true,
+  "name": "qtrade-v2",
   "scripts": {
     "start": "node server/server.js",
     "dev": "PORT=9000 umi dev",
