@@ -1,3 +1,3 @@
 {
-  "origins": ["http://localhost", "https://qtrade-v2.herokuapp.com"]
+  "origins": ["http://localhost:9000", "https://qtrade-v2.herokuapp.com"]
 }
