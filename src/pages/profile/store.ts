@@ -27,7 +27,7 @@ function profile() {
     axios
       .get(APIS.getJWT)
       .then((res) => {
-        setJWT(res.data.data.jwt);
+        setJWT(res.data.data.token);
       })
       .finally(() => {
         setLoading(false);

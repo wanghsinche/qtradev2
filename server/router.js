@@ -2,8 +2,7 @@ const proxy = require('express-http-proxy');
 const { authorize } = require('./authorize');
 const { githubOauth, user, logout, getJWT } = require('./user');
 
-const graphqlEndpoint =
-  process.env.GRAPHQL || 'https://baostock-graphql.herokuapp.com/';
+const graphqlEndpoint = process.env.GRAPHQL || 'http://localhost:8000';
 
 exports.router = (app) => {
   app.use(authorize(['/proxy/graphql']));

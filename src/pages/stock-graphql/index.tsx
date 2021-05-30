@@ -1,11 +1,19 @@
 import * as React from 'react';
 import { BasicLayoutProps, PageContainer } from '@ant-design/pro-layout';
 import { APIS } from '@/pages/profile/store';
+import { Spin } from 'antd';
 export default (p: BasicLayoutProps) => {
+  const [loading, setLoading] = React.useState(true);
   const nodeID = 'graphql-node';
-  useUtterances(nodeID);
+  useUtterances(nodeID, () => setLoading(false));
 
-  return <div id={nodeID} />;
+  return (
+    <Spin spinning={loading}>
+      <div id={nodeID} style={{ minHeight: 300 }}>
+        Loading GraphQL Playground
+      </div>
+    </Spin>
+  );
 };
 
 const useUtterances = (nodeID: string, onload: () => void = () => void 0) => {

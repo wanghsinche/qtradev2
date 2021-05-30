@@ -46,19 +46,18 @@ exports.githubOauth = (req, res) => {
 
 exports.user = (req, res) => {
   const user = verify(req);
-  res.json(buildBody(user), 200);
+  res.json(buildBody(user, 200));
 };
 
 exports.logout = (req, res) => {
-  req.session.destroy();
-  res.redirect('/');
+  res.cookie(TOKENNAME, '').redirect('/');
 };
 
 exports.getJWT = function getJWT(req, res) {
   let token = req.get(TOKENNAME) || req.cookies[TOKENNAME]; // use github oauth
   const user = verify(req);
   if (user) {
-    token = jwt.sign({ login, avatar_url, email }, APPKEY);
+    token = jwt.sign(user, APPKEY);
     res.json(buildBody({ token }, 200));
   } else {
     res.json(buildBody(user, 403, new Error('unauthorized')));

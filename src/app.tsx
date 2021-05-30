@@ -3,9 +3,8 @@ import {
   BasicLayoutProps,
   Settings as LayoutSettings,
 } from '@ant-design/pro-layout';
-import { APIS } from '@/pages/profile/store';
 import { CommentBTN, CommentDrawer } from '@/components/comment';
-
+import { Head } from '@/pages/profile';
 export const layout = ({
   initialState,
 }: {
@@ -18,11 +17,7 @@ export const layout = ({
         <CommentDrawer />
       </div>
     ),
-    rightContentRender: () => (
-      <div>
-        <a href={APIS.logout}>logout</a>
-      </div>
-    ),
+    rightContentRender: () => <Head />,
     menuHeaderRender: undefined,
     ...initialState?.settings,
   };
