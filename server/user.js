@@ -1,7 +1,8 @@
 const { buildBody } = require('./helper');
 const { default: axios } = require('axios');
 const jwt = require('jsonwebtoken');
-const { TOKENNAME, APPKEY } = require('./authorize');
+const { TOKENNAME, APPKEY, verify } = require('./authorize');
+
 const domain = process.env.DOMAIN || 'http://localhost:8011';
 
 exports.githubOauth = (req, res) => {
@@ -51,16 +52,6 @@ exports.user = (req, res) => {
 exports.logout = (req, res) => {
   req.session.destroy();
   res.redirect('/');
-};
-
-exports.verify = function verify(req) {
-  const token = req.get(TOKENNAME) || req.cookies[TOKENNAME]; // use github oauth
-  try {
-    const obj = jwt.verify(token, APPKEY);
-    return obj;
-  } catch (err) {
-    console.error(err);
-  }
 };
 
 exports.getJWT = function getJWT(req, res) {

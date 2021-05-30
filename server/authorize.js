@@ -12,3 +12,13 @@ module.exports.authorize = (requireList) =>
     }
     res.json(buildBody(null, 403, Error('no authority')));
   };
+
+exports.verify = function verify(req) {
+  const token = req.get(TOKENNAME) || req.cookies[TOKENNAME]; // use github oauth
+  try {
+    const obj = jwt.verify(token, APPKEY);
+    return obj;
+  } catch (err) {
+    console.error(err);
+  }
+};
