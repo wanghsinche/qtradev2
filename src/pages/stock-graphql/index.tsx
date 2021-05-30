@@ -43,7 +43,7 @@ const useUtterances = (nodeID: string, onload: () => void = () => void 0) => {
           'schema.polling.enable': true, // enables automatic schema polling
           'schema.polling.endpointFilter': '*localhost*', // endpoint filter for schema polling
           'schema.polling.interval': 2000, // schema polling interval in ms
-          'schema.disableComments': boolean,
+          'schema.disableComments': true,
           'tracing.hideTracingResponse': true,
           'tracing.tracingSupported': false, // set false to remove x-apollo-tracing header from Schema fetch requests
         },
