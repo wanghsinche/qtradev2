@@ -15,6 +15,13 @@ export default (p: BasicLayoutProps) => {
         <Descriptions.Item label="avatar">
           {store.user ? <img width="40" src={store.user.avatar_url} /> : ''}
         </Descriptions.Item>
+        <Descriptions.Item label="token">
+          {store.jwt ? (
+            store.jwt
+          ) : (
+            <Button onClick={store.getJWT}>get token</Button>
+          )}
+        </Descriptions.Item>
       </Descriptions>
     );
   }

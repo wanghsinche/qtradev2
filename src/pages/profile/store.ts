@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { createModel } from 'hox';
 import axios from 'axios';
 interface IUser {
@@ -8,6 +8,7 @@ interface IUser {
 }
 function profile() {
   const [user, setUser] = useState<IUser>();
+  const [jwt, setJWT] = useState('');
   const [loading, setLoading] = useState<Boolean>();
   useEffect(() => {
     setLoading(true);
@@ -20,9 +21,24 @@ function profile() {
         setLoading(false);
       });
   }, []);
+
+  const getJWT = useCallback(() => {
+    setLoading(true);
+    axios
+      .get(APIS.getJWT)
+      .then((res) => {
+        setJWT(res.data.data.jwt);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
+
   return {
     user,
     loading,
+    jwt,
+    getJWT,
   };
 }
 
@@ -39,4 +55,5 @@ export enum APIS {
   user = '/api/user',
   graphQL = '/proxy/graphql',
   logout = '/api/logout',
+  getJWT = '/api/get_jwt',
 }
