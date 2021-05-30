@@ -29,8 +29,12 @@ const useUtterances = (nodeID: string, onload: () => void = () => void 0) => {
       window.GraphQLPlayground.init(document.getElementById(nodeID), {
         // options as 'endpoint' belong here
         endpoint: APIS.graphQL,
-        'request.credentials': 'include',
-        'editor.theme': 'light',
+        request: {
+          credentials: 'include',
+        },
+        editor: {
+          theme: 'light',
+        },
       });
       onload();
     };
