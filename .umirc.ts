@@ -6,6 +6,7 @@ export default defineConfig({
   },
   layout: {},
   routes: [
+    { path: '/', component: '@/pages/profile' },
     { path: '/profile', component: '@/pages/profile', name: 'Profile' },
     {
       path: '/stock-graphql',
