@@ -8,10 +8,13 @@ export default (p: BasicLayoutProps) => {
   const store = useStore();
   if (!store.user) {
     return (
-      <PageContainer title={p.route?.name}>
+      <PageContainer title={p.route?.name} style={{ minHeight: 600 }}>
         <Card bordered={false}>
-          <a href={oauth}>
-            <Button>login with github</Button>
+          <a href={oauth} title="login github">
+            <img
+              src="https://img.shields.io/badge/login%20-github-white"
+              alter="login github"
+            />
           </a>
         </Card>
       </PageContainer>
@@ -51,11 +54,11 @@ export default (p: BasicLayoutProps) => {
           <List.Item>
             <Card
               size="small"
-              title="Stock GraphQL"
-              extra={<Link to="/stock-graphql">Go To</Link>}
+              title="AKShare GraphQL"
+              extra={<Link to="/akshare/introduce">Go To</Link>}
               style={{ width: 300 }}
             >
-              <p>stock graphql</p>
+              <p>AKShare GraphQL Server</p>
             </Card>
           </List.Item>
         </List>
