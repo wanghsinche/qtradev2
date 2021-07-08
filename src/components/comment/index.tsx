@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Drawer } from 'antd';
+import { Button, Drawer, Spin } from 'antd';
 import commentModel from './store';
 import './style.less';
 export const CommentBTN = () => {
@@ -28,6 +28,7 @@ export const CommentDrawer = () => {
       onClose={() => store.setShow(false)}
       width="400"
     >
+      {!store.show && <Spin spinning={true} />}
       <div id={commentNodeId} />
     </Drawer>
   );

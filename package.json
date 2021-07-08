@@ -3,6 +3,7 @@
   "name": "qtrade-v2",
   "scripts": {
     "start": "node server/server.js",
+    "start:test-server": "NODE_ENV=test node server/server.js",
     "dev": "PORT=9000 umi dev",
     "build": "umi build",
     "postinstall": "umi generate tmp",

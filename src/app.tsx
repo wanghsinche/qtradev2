@@ -3,6 +3,7 @@ import {
   BasicLayoutProps,
   Settings as LayoutSettings,
 } from '@ant-design/pro-layout';
+import { MyMenu } from '@/components/menu';
 import { CommentBTN, CommentDrawer } from '@/components/comment';
 import { Head } from '@/pages/profile';
 export const layout = ({
@@ -11,6 +12,7 @@ export const layout = ({
   initialState: { settings?: LayoutSettings };
 }): BasicLayoutProps => {
   return {
+    ...initialState?.settings,
     footerRender: () => (
       <div>
         <CommentBTN />
@@ -19,6 +21,8 @@ export const layout = ({
     ),
     rightContentRender: () => <Head />,
     menuHeaderRender: undefined,
-    ...initialState?.settings,
+    siderWidth: 200,
+    theme: 'light',
+    navTheme: 'light',
   };
 };

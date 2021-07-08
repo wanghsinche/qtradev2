@@ -4,18 +4,14 @@ import { PageContainer, BasicLayoutProps } from '@ant-design/pro-layout';
 import './style.less';
 import { Link } from 'umi';
 import useStore, { APIS, oauth } from './store';
+import { LoginBTN } from '@/components/login-btn';
 export default (p: BasicLayoutProps) => {
   const store = useStore();
   if (!store.user) {
     return (
       <PageContainer title={p.route?.name} style={{ minHeight: 600 }}>
         <Card bordered={false}>
-          <a href={oauth} title="login github">
-            <img
-              src="https://img.shields.io/badge/login%20-github-white"
-              alter="login github"
-            />
-          </a>
+          <LoginBTN />
         </Card>
       </PageContainer>
     );
@@ -70,7 +66,11 @@ export default (p: BasicLayoutProps) => {
 export const Head = () => {
   const store = useStore();
   if (!store.user) {
-    return <div>Hi, Guess</div>;
+    return (
+      <div>
+        <span style={{ marginRight: 10 }}>Hi! Please: </span> <LoginBTN />
+      </div>
+    );
   }
 
   return (

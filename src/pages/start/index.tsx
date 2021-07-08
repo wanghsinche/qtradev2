@@ -21,17 +21,6 @@ QTrade, wanghsinche 的自用策略+数据一站式平台
 
 export default (p: BasicLayoutProps) => {
   const store = useStore();
-  const dom = (
-    <div style={{ margin: '40px 0' }}>
-      <Divider orientation="left">请登入：</Divider>
-      <a href={oauth} title="login github">
-        <img
-          src="https://img.shields.io/badge/login%20-github-white"
-          alt="login github"
-        />
-      </a>
-    </div>
-  );
 
   const services = (
     <div>
@@ -80,7 +69,6 @@ export default (p: BasicLayoutProps) => {
   return (
     <PageContainer>
       <ReactMarkdown>{txt}</ReactMarkdown>
-      {store.user?.login ? '' : dom}
       {services}
     </PageContainer>
   );
